@@ -12,6 +12,12 @@ class TrainerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+        //unlock or lock
+        $this->middleware('auth');
+    }//end construct
+
     public function index(Request $request)
     {
         if($request==null){//display all
