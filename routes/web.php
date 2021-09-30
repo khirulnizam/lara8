@@ -31,8 +31,16 @@ Route::resource('training',
     //->name('trainer.create');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('test123');//home route
+    //return view('welcome');
 });
+
+
+
+
+
+
+
 
 Auth::routes();
 
