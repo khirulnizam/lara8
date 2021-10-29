@@ -9,7 +9,7 @@ class TrainingController extends Controller
 {
     public function __construct(){
         //unlock or lock
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }//end construct
     /**
      * Display a listing of the resource.

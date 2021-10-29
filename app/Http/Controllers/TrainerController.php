@@ -15,13 +15,13 @@ class TrainerController extends Controller
 
     public function __construct(){
         //unlock or lock
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }//end construct
 
     public function index(Request $request)
     {
         if($request==null){//display all
-            $trainers=Trainer::paginate(5);
+            $trainers=Trainer::all();
         }
         else{//filtering process with
             $keyword=$request->get('keyword');
@@ -31,7 +31,7 @@ class TrainerController extends Controller
             ->paginate(5);
         }
         //point to interface named index
-        return view('trainers.index')
+        return view('trainers.listing')//refer to folder resources/views
         ->with(compact('trainers'));
     }
 
@@ -55,7 +55,6 @@ class TrainerController extends Controller
     public function store(Request $request)
     {
         //store data to databasse
-        //data validation/all field not nullable
         $request->validate([
             'trainername' => 'required',
             'trainerexpert' => 'required',
@@ -67,7 +66,6 @@ class TrainerController extends Controller
         //redirect
         return redirect()->route('trainer.create')
         ->with('success', 'The new trainer created successfully.');
-
     }//end store
 
     /**

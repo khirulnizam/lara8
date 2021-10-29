@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\TrainerController;//import
+use App\Http\Controllers\VenueController;
 
+//route resource for TrainingController
+Route::resource('venue',
+    '\App\Http\Controllers\VenueController');
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +25,18 @@ Route::resource('trainer',
     '\App\Http\Controllers\TrainerController');
 
 //route resource for TrainingController
-Route::resource('training',
-    '\App\Http\Controllers\TrainingController');
+//Route::resource('training',
+    //'\App\Http\Controllers\TrainingController');
+
 
 //route to call TrainerController@create
 //laravel8 redo route declaration
-//Route::get('/trainer/create',
-    //[TrainerController::class, 'create'])//pointing to function create
-    //->name('trainer.create');
+Route::get('/venue/carian',
+    [VenueController::class, 'carianpublic'])//pointing to function carian
+    ->name('venue.carian');
 
 Route::get('/', function () {
-    return view('test123');//home route
+    return view('venues.create');//home route
     //return view('welcome');
 });
 
